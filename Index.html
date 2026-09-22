@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Input Types Übersicht</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0d5fc 0%, #f4f0ff 50%, #e2e8f8 100%);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(100, 80, 150, 0.15);
+            padding: 30px;
+            width: 100%;
+            max-width: 650px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .header-top {
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6c5ce7;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4b39b3;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .form-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1dbf5;
+        }
+
+        .tag-code {
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #d63031;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .badge {
+            background: #00b894;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .input-row label {
+            flex: 1;
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .input-wrapper {
+            flex: 1.8;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .input-wrapper input[type="text"],
+        .input-wrapper input[type="email"],
+        .input-wrapper input[type="password"],
+        .input-wrapper input[type="date"],
+        .input-wrapper input[type="time"],
+        .input-wrapper input[type="number"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #6c5ce7;
+            box-shadow: 0 0 5px rgba(108, 92, 231, 0.2);
+        }
+
+        .input-wrapper input[type="range"] {
+            width: 100%;
+            accent-color: #6c5ce7;
+        }
+
+        .input-wrapper input[type="color"] {
+            border: none;
+            width: 40px;
+            height: 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .input-wrapper input[type="file"] {
+            font-size: 12px;
+        }
+
+        .checkbox-label, .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .type-indicator {
+            flex: 1.2;
+            text-align: right;
+            font-family: monospace;
+            font-size: 12px;
+            color: #6c5ce7;
+            background: #f0edfc;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-left: 15px;
+            border: 1px solid #dfd8fc;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-reset {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #b2bec3;
+            background: #fff;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #f5f6fa;
+        }
+
+        .btn-submit {
+            flex: 2;
+            padding: 10px;
+            border: none;
+            background: #00b894;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #00a884;
+        }
+
+        /* Fußbereich der Karte */
+        .footer-social {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e1dbf5;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .profile img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            background: #fff;
+            border: 1px solid #dcdde1;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-top">HTML &bull; FORMS</div>
+        <h1>HTML Input Types</h1>
+
+        <div class="form-header-bar">
+            <div class="tag-code">&lt;input type="..."&gt;</div>
+            <div class="badge">13 / 13 types</div>
+        </div>
+
+        <form>
+            <!-- 1. Text -->
+            <div class="input-row">
+                <label>Name</label>
+                <div class="input-wrapper">
+                    <input type="text" value="Karel Mráz">
+                </div>
+                <div class="type-indicator">type="text"</div>
+            </div>
+
+            <!-- 2. Email -->
+            <div class="input-row">
+                <label>Email</label>
+                <div class="input-wrapper">
+                    <input type="email" value="karel@atheros.ai">
+                </div>
+                <div class="type-indicator">type="email"</div>
+            </div>
+
+            <!-- 3. Password -->
+            <div class="input-row">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <input type="password" value="secretpassword">
+                </div>
+                <div class="type-indicator">type="password"</div>
+            </div>
+
+            <!-- 4. Date -->
+            <div class="input-row">
+                <label>Birthday</label>
+                <div class="input-wrapper">
+                    <input type="date" value="1999-01-26">
+                </div>
+                <div class="type-indicator">type="date"</div>
+            </div>
+
+            <!-- 5. Time -->
+            <div class="input-row">
+                <label>Reminder</label>
+                <div class="input-wrapper">
+                    <input type="time" value="09:30">
+                </div>
+                <div class="type-indicator">type="time"</div>
+            </div>
+
+            <!-- 6. Number -->
+            <div class="input-row">
+                <label>Team size</label>
+                <div class="input-wrapper">
+                    <input type="number" value="3" min="1" max="100">
+                </div>
+                <div class="type-indicator">type="number"</div>
+            </div>
+
+            <!-- 7. Range -->
+            <div class="input-row">
+                <label>Experience</label>
+                <div class="input-wrapper">
+                    <input type="range" min="0" max="100" value="50">
+                </div>
+                <div class="type-indicator">type="range"</div>
+            </div>
+
+            <!-- 8. Color -->
+            <div class="input-row">
+                <label>Theme</label>
+                <div class="input-wrapper">
+                    <input type="color" value="#6c5ce7">
+                </div>
+                <div class="type-indicator">type="color"</div>
+            </div>
+
+            <!-- 9. File -->
+            <div class="input-row">
+                <label>Avatar</label>
+                <div class="input-wrapper">
+                    <input type="file">
+                </div>
+                <div class="type-indicator">type="file"</div>
+            </div>
+
+            <!-- 10. Checkbox -->
+            <div class="input-row">
+                <label>News</label>
+                <div class="input-wrapper">
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked> Send me news
+                    </label>
+                </div>
+                <div class="type-indicator">type="checkbox"</div>
+            </div>
+
+            <!-- 11. Radio -->
+            <div class="input-row">
+                <label>Plan</label>
+                <div class="input-wrapper" style="gap: 15px;">
+                    <label class="radio-group"><input type="radio" name="plan"> Free</label>
+                    <label class="radio-group"><input type="radio" name="plan" checked> Pro</label>
+                </div>
+                <div class="type-indicator">type="radio"</div>
+            </div>
+
+            <!-- 12 & 13. Reset & Submit Buttons -->
+            <div class="actions">
+                <button type="reset" class="btn-reset">Reset</button>
+                <button type="submit" class="btn-submit">&#10003; Signed up</button>
+            </div>
+        </form>
+
+        <!-- Footer / Social like im Bild -->
+        <div class="footer-social">
+            <div class="profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar">
+                <span>@karelm_dev</span>
+            </div>
+            <div class="social-buttons">
+                <button class="social-btn">&hearts; Like</button>
+                <button class="social-btn">&#128278; Save for later</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
