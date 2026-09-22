@@ -237,6 +237,13 @@
             font-size: 12px;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .social-btn.active {
+            background: #ffeaa7;
+            border-color: #fdcb6e;
+            color: #d63031;
         }
     </style>
 </head>
@@ -351,7 +358,7 @@
                     <label class="radio-group"><input type="radio" name="plan"> Free</label>
                     <label class="radio-group"><input type="radio" name="plan" checked> Pro</label>
                 </div>
-                <div class="type-indicator">type="radio"</div>
+                <div class="type-indicator">type="type="radio"</div>
             </div>
 
             <!-- 12 & 13. Reset & Submit Buttons -->
@@ -361,18 +368,41 @@
             </div>
         </form>
 
-        <!-- Footer / Social like im Bild -->
+        <!-- Footer / Social -->
         <div class="footer-social">
             <div class="profile">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar">
                 <span>@karelm_dev</span>
             </div>
             <div class="social-buttons">
-                <button class="social-btn">&hearts; Like</button>
-                <button class="social-btn">&#128278; Save for later</button>
+                <button class="social-btn" id="like-btn">&hearts; Like</button>
+                <button class="social-btn" id="save-btn">&#128278; Save for later</button>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript für kleine Interaktionen -->
+    <script>
+        const likeBtn = document.getElementById('like-btn');
+        const saveBtn = document.getElementById('save-btn');
+
+        likeBtn.addEventListener('click', () => {
+            likeBtn.classList.toggle('active');
+            if(likeBtn.classList.contains('active')) {
+                likeBtn.innerHTML = '&hearts; Liked';
+            } else {
+                likeBtn.innerHTML = '&hearts; Like';
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            saveBtn.classList.toggle('active');
+            if(saveBtn.classList.contains('active')) {
+                saveBtn.innerHTML = '&#128278; Saved';
+            } else {
+                saveBtn.innerHTML = '&#128278; Save for later';
+            }
+        });
+    </script>
 </body>
 </html>
